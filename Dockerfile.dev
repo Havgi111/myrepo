@@ -1,0 +1,8 @@
+# colon alpine gives smalles possible image of node/any
+FROM node:alpine
+# to make packane.json file available to npm install commands befor it gets executed in temp container
+WORKDIR '/app'
+COPY package.json .
+RUN npm install
+COPY ./ ./
+CMD ["npm", "run", "start"]
